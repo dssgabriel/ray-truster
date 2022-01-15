@@ -1,5 +1,5 @@
 use indicatif::{ProgressBar, ProgressIterator, ProgressStyle};
-use rtiow::{write_color, ColorRGB};
+use ray_truster::{write_color, ColorRGB};
 
 fn main() {
     let width = 512u64;
