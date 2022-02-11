@@ -26,12 +26,12 @@ impl Vec3 {
         self.z
     }
 
-    pub fn len(&self) -> f64 {
-        self.squared_len().sqrt()
-    }
-
     pub fn squared_len(&self) -> f64 {
         self.x * self.x + self.y * self.y + self.z * self.z
+    }
+
+    pub fn len(&self) -> f64 {
+        self.squared_len().sqrt()
     }
 
     pub fn distance(&self, other: &Vec3) -> f64 {
@@ -172,4 +172,36 @@ impl PartialEq for Vec3 {
     fn eq(&self, other: &Vec3) -> bool {
         self.x == other.x() && self.y == other.y() && self.z == other.z()
     }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn builds() {
+        let v = Vec3::new(0.0, 0.0, 0.0);
+
+        assert_eq!(v.x, 0.0);
+        assert_eq!(v.y, 0.0);
+        assert_eq!(v.z, 0.0);
+    }
+
+    #[test]
+    fn computes_len() {
+        let v = Vec3::new(2.0, 2.0, 2.0);
+
+        assert_eq!(v.squared_len(), 12.0);
+        assert_eq!(v.len(), (12.0_f64).sqrt());
+    }
+
+    #[test]
+    fn computes_distance() {
+        let v1 = Vec3::new(0.0, 0.0, 0.0);
+        let v2 = Vec3::new(2.0, 2.0, 2.0);
+
+        assert_eq!(v1.distance(&v2), v2.distance(&v1));
+    }
+
+    // TODO: More unit tests
 }
