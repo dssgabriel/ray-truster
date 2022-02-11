@@ -5,3 +5,4 @@ edition = "2021"
 
 [dependencies]
 indicatif = "0.16.2"
+derive_builder = "0.10.2"
